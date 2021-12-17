@@ -22,3 +22,9 @@ By executing:
 ## pip3 install python3.7-tk
 
 I solved my problem.
+
+
+# Embedding python game in browser 
+Solution 1:  pyjs, 
+compile python code to javascript, then use javascript to integrate with browser
+http://pyjs.org/
