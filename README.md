@@ -28,3 +28,9 @@ I solved my problem.
 Solution 1:  pyjs, 
 compile python code to javascript, then use javascript to integrate with browser
 http://pyjs.org/
+
+
+#Update(December 18th,2021)
+
+1. In terminal: $python3 ai.py
+2. In terminal: $python3 main_update1.py
