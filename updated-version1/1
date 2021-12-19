@@ -1,2 +1,2 @@
-label_answer =  tkinter.Label(window, text=question + ' : 显示答案',font=('Arial', 20)，fg = 'blue')
+label_answer =  tkinter.Label(window, text=question + ' : Showing the answer',font=('Arial', 20)，fg = 'blue')
 label_answer.pack()
