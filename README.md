@@ -1,5 +1,9 @@
 # Ruby-Risks
-Final Project for Heuristic Problem solving. Enjoy the game by "python main.py". :)
+Ruby-Risks is a game designed by Professor Shasha and realized by me. In the game set-up, each player can choose an amount of gems to guess, if the predicted amount is less or equal to the amount of gems in the box, then the player gains the predicted amount of gems, otherwise, the player get nothing, hence it is a "risk".
+
+This is a final Project for Heuristic Problem solving. Enjoy the game by "python main.py". :)
+"main2 is a variant of the original game, more risk is included."
+
 
 Well, "python main.py" in terminal works on my Linux system.
 
