@@ -1,0 +1,17 @@
+How to play:
+1. Start by double click on the file ruby.html
+
+In the interface:
+Step1: Add players by the names
+At this step, please feel free to add an AI player
+
+Step2: Designate the number of total rubies in the section Ruby Number
+
+Step3: Designate the number of boxes in the section Box Number, the box number should be divisible by the total number of players, hence each player has equal amount of boxes to open.
+
+Step4: Click on the Start Game on the right top side 
+
+Step5: Guess how many rubies you want and which box to open by corresponding players.
+
+Play the game until all the boxes has been opened, the winner is the player with the most amount of rubies.
+
