@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ruby Risks</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/ruby.css">
+</head>
+<body>
+<div id="app">
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table">
+        <thead>
+        <th></th>
+        <th></th>
+        <th>Ruby Risks</th>
+        </thead>
+	<thead>
+        <th></th>
+        <th></th>
+        <th>Game cited from Professor Dennis Shasha, developed by Yue Zhou(yz1268 at nyu)</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Player1 Name</td>
+          <td><input type="text" v-model="players[0]" :disabled="ifStart"></td>
+          <td class="td-center">{{player_rubies[0]}}</td>
+        </tr>
+        <tr>
+          <td>Player2 Name</td>
+          <td><input type="text" v-model="players[1]" :disabled="ifStart"></td>
+          <td class="td-center">{{player_rubies[1]}}</td>
+        </tr>
+        <tr>
+          <td>Player3 Name</td>
+          <td><input type="text" v-model="players[2]" :disabled="ifStart"></td>
+          <td class="td-center">{{player_rubies[2]}}</td>
+        </tr>
+        <tr>
+          <td>Player4 Name</td>
+          <td><input type="text" v-model="players[3]" :disabled="ifStart"></td>
+          <td class="td-center">{{player_rubies[3]}}</td>
+        </tr>
+        <tr>
+          <td>Player5 Name</td>
+          <td><input type="text" v-model="players[4]" :disabled="ifStart"></td>
+          <td class="td-center">{{player_rubies[4]}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <div class="row bt-ai-start">
+        <button v-show="!hasAI" type="button" class="btn btn-info bt_ai" @click="addAI">Add AI</button>
+        <button v-show="hasAI" type="button" class="btn btn-danger bt_ai" @click="addAI">Delete AI</button>
+        <button v-show="!ifStart" type="button" class="btn btn-info" @click="startGame">Start Game</button>
+        <button v-show="ifStart" type="button" class="btn btn-danger" @click="stopGame">Stop Game</button>
+      </div>
+      <div class="row current-player">
+        <div class="col-md-3 current-player-label">Current Player</div>
+        <div class="col-md-3 current-player-name">{{currentPlayer}}</div>
+      </div>
+      <div class="box">Guess the number of gem in the box</div>
+    </div>
+  </div>
+  <div class="row ruby-number">
+    <div class="col-md-6">
+      <table class="table">
+        <tbody>
+        <tr>
+          <td>Ruby Number</td>
+          <td><input type="text" v-model="rubyNumber" :disabled="ifStart"></td>
+        </tr>
+        <tr>
+          <td>Box Number</td>
+          <td><input type="text" v-model="boxNumber" :disabled="ifStart"></td>
+        </tr>
+        <tr>
+          <td>Opened Box Number</td>
+          <td class="td-center">{{openedBoxNumber}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <table class="table">
+        <tbody>
+        <tr>
+          <td>How many rubies you want?</td>
+          <td><input type="text" v-model="guessNumber"></td>
+        </tr>
+        <tr>
+          <td>Which box to open?</td>
+          <td><input type="text" v-model="ideaBoxIndex"></td>
+        </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-info bt_submit" @click="submit">Submit</button>
+    </div>
+  </div>
+  <div class="row game-result">
+    <div class="game-result-label">Game Result</div>
+    <textarea class="game-result-content" v-model="gameResult"></textarea>
+  </div>
+</div>
+<script src="js/bootstrap.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/ruby.js"></script>
+<p></p>
+<thead>
+<th>Game Instructions </th>
+</thead>
+<p>
+Step1: Add players by the names.
+At this step, please feel free to add an AI player.<br />
+Step2: Designate the number of total rubies in the section Ruby Number.<br />
+Step3: Designate the number of boxes in the section Box Number.<br />
+The box number should be divisible by the total number of players.
+Hence each player has equal amount of boxes to open.<br />
+Step4: Click on the Start Game on the right top side.<br />
+Step5: Guess how many rubies you want and which box to open by corresponding players.<br />
+Play the game until all the boxes has been opened.
+The winner is the player with the most amount of rubies.
+</p>
+</body>
+</html>
