@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ruby Risks</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/ruby.css">
+</head>
+<body>
+<div id="app">
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table">
+        <thead>
+        <th></th>
+        <th></th>
+        <th>Number of rubies collected</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Player1 Name</td>
+          <td><input type="text" v-model="players[0]" :disabled="playerIfGiveUp[0]"></td>
+          <td class="td-center">{{player_rubies[0]}}</td>
+        </tr>
+        <tr>
+          <td>Player2 Name</td>
+          <td><input type="text" v-model="players[1]" :disabled="playerIfGiveUp[1]"></td>
+          <td class="td-center">{{player_rubies[1]}}</td>
+        </tr>
+        <tr>
+          <td>Player3 Name</td>
+          <td><input type="text" v-model="players[2]" :disabled="playerIfGiveUp[2]"></td>
+          <td class="td-center">{{player_rubies[2]}}</td>
+        </tr>
+        <tr>
+          <td>Player4 Name</td>
+          <td><input type="text" v-model="players[3]" :disabled="playerIfGiveUp[3]"></td>
+          <td class="td-center">{{player_rubies[3]}}</td>
+        </tr>
+        <tr>
+          <td>Player5 Name</td>
+          <td><input type="text" v-model="players[4]" :disabled="playerIfGiveUp[4]"></td>
+          <td class="td-center">{{player_rubies[4]}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <div class="row bt-ai-start">
+        <button type="button" class="btn btn-info bt_ai" data-toggle="modal" data-target="#addPlayerModal"
+                :disabled="ifStart">Add Player
+        </button>
+        <button v-show="!hasAI" type="button" class="btn btn-info bt_ai" @click="addAI" :disabled="ifStart">Add AI
+        </button>
+        <button v-show="hasAI" type="button" class="btn btn-danger bt_ai" @click="addAI" :disabled="ifStart">Delete AI
+        </button>
+        <button v-show="!ifStart" type="button" class="btn btn-info bt_ai" @click="startGame">Start Game</button>
+        <button v-show="ifStart" type="button" class="btn btn-danger bt_ai" @click="stopGame">Stop Game</button>
+        <button v-show="ifStart" type="button" class="btn btn-info bt_ai" @click="giveUp">Give up</button>
+      </div>
+      <div class="row current-player">
+        <div class="col-md-3 current-player-label">Current Player</div>
+        <div class="col-md-3 current-player-name">{{currentPlayer}}</div>
+      </div>
+      <div class="box">Guess the number of rubies in the box</div>
+    </div>
+  </div>
+  <div class="ruby-boxes">
+    <div v-for="(item,index) in rubiesEachBox" class="ruby-box" :class="{openedRubyBox: boxIfOpened[index]}"
+         @click="openBox(index)" data-toggle="modal" data-target="#guessRubyModal">{{index+1}}
+    </div>
+  </div>
+  <!--<div class="row ruby-number">-->
+  <!--<div class="col-md-6">-->
+  <!--<table class="table">-->
+  <!--<tbody>-->
+  <!--<tr>-->
+  <!--<td>Ruby Number</td>-->
+  <!--<td><input type="text" v-model="rubyNumber" :disabled="ifStart"></td>-->
+  <!--</tr>-->
+  <!--<tr>-->
+  <!--<td>Box Number</td>-->
+  <!--<td><input type="text" v-model="boxNumber" :disabled="ifStart"></td>-->
+  <!--</tr>-->
+  <!--<tr>-->
+  <!--<td>Opened Box Number</td>-->
+  <!--<td class="td-center">{{openedBoxNumber}}</td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+  <!--</table>-->
+  <!--</div>-->
+  <!--<div class="col-md-4">-->
+  <!--<table class="table">-->
+  <!--<tbody>-->
+  <!--<tr>-->
+  <!--<td>Guess Number</td>-->
+  <!--<td><input type="text" v-model="guessNumber"></td>-->
+  <!--</tr>-->
+  <!--<tr>-->
+  <!--<td>Idea Box Index</td>-->
+  <!--<td><input type="text" v-model="ideaBoxIndex"></td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+  <!--</table>-->
+  <!--<button type="button" class="btn btn-info bt_submit" @click="submit">Submit</button>-->
+  <!--</div>-->
+  <!--</div>-->
+  <div class="row game-result">
+    <div class="game-result-label">Game Result</div>
+    <textarea class="game-result-content" v-model="gameResult"></textarea>
+  </div>
+
+  <!--Windows for adding players-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="addPlayerModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add Players</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" v-model="inputPlayers">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ref="close1">Close</button>
+          <button type="button" class="btn btn-info" @click="addPlayer">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Windows for guessing the number of rubies-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="guessRubyModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Guess Ruby Number</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" v-model="guessNumber">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ref="close2">Close</button>
+          <button type="button" class="btn btn-info" @click="submit">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/ruby.js"></script>
+<p></p>
+<thead>
+<th><b>Game Instructions:</b> </th>
+</thead>
+<p>
+Step1: Add players by name. To add an AI, click on the add AI box.<br />
+Step2: Click on start. <br />
+<br /> 
+<b> Game Author: </b> <br />
+This game is <b> invented </b> by <b>Professor Dennis Shasha at NYU.</b> <br />
+<b> Interface Developer:</b> <br />
+This game interface is developed by <b>Yue Zhou(yz1268) at NYU.</b><br />
+</p>
+</body>
+</html>
