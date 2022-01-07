@@ -1,0 +1,85 @@
+.bt-ai-start {
+  margin: 40px 40px;
+}
+.bt_ai {
+  margin-right: 15px;
+}
+.current-player {
+  margin: 20px 40px;
+  font-size: 16px;
+}
+.current-player-label {
+  height: 40px;
+  width: 160px;
+  background-color: #D6D5B7;
+  text-align: center;
+  line-height: 40px;
+}
+.current-player-name {
+  height: 40px;
+  width: 120px;
+  background-color: #D6D5B7;
+  margin-left: 20px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+}
+.box {
+  margin: 20px 40px;
+  height: 40px;
+  width: 300px;
+  font-size: 16px;
+  background-color: #D6D5B7;
+  text-align: center;
+  line-height: 40px;
+}
+.table {
+  margin: 20px;
+}
+.td-center {
+  text-align: center;
+}
+.bt_submit {
+  float: right;
+}
+.game-result {
+  margin: 24px 30px;
+  display: flex;
+  width: 960px;
+}
+.game-result-label {
+  height: 100px;
+  width: 160px;
+  font-size: 16px;
+  background-color: #D6D5B7;
+  text-align: center;
+  line-height: 100px;
+  flex: 1;
+}
+.game-result-content {
+  flex: 4;
+  border: 1px solid #000;
+  margin-left: 40px;
+  height: 100px;
+  width: 800px;
+}
+.guess-number {
+  margin-left: 40px;
+}
+.ruby-boxes {
+  margin: 10px 20px 40px;
+}
+.ruby-box {
+  margin: 0 10px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: #ffcb00;
+  line-height: 50px;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+.openedRubyBox {
+  background-color: !important;
+}

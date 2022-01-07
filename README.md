@@ -1,3 +1,9 @@
+# To Play:
+The web version of the game Ruby Risks is located on Dr.Ecco's webiste at NYU:
+https://cims.nyu.edu/~as9913/drecco/games/ruby_game/
+
+In order to play, please click on the link and hit the button "POPUP".
+
 # Ruby-Risks
 Ruby-Risks is a game designed by Professor Shasha and realized by me. In the game set-up, each player can choose an amount of gems to guess, if the predicted amount is less or equal to the amount of gems in the box, then the player gains the predicted amount of gems, otherwise, the player get nothing, hence it is a "risk".
 
